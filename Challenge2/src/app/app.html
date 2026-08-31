@@ -1,5 +1,6 @@
 @if (isLoading()) {
   <app-loader></app-loader>
 } @else {
-  <p>Contactos cargados</p>
+<app-contact-list [contacts]="contacts()" (deleteContact)="eliminarContacto($event)"></app-contact-list>
+<app-contact-form (contactAdded)="agregarContacto($event)"></app-contact-form>
 }

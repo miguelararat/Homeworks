@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Contact } from './contact.model';
+import { Contact, NewContact } from './contact.model';
 import { Loader } from './loader/loader';
+import { ContactList } from './contact-list/contact-list';
+import { ContactForm } from './contact-form/contact-form';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Loader],
+  imports: [RouterOutlet, Loader, ContactList, ContactForm],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -14,6 +16,18 @@ export class App {
 
   public contacts = signal<Contact[]>([]);
   public isLoading = signal<boolean> ( true );
+  eliminarContacto(id: number) {
+  this.contacts.set(this.contacts().filter(contacto => contacto.id !== id))
+}
+
+  agregarContacto(nuevo: NewContact) {
+    const newContact: Contact = {
+      id: Date.now(),
+      name: nuevo.name,
+      phone: nuevo.phone
+    };
+    this.contacts.set([...this.contacts(), newContact]);
+  }
 
   constructor(){
   setTimeout(()=> {

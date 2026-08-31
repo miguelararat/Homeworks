@@ -1,1 +1,11 @@
-<p>contact-list works!</p>
+<p>Lista de contactos</p>
+<ul>
+    @for(contact of contacts; track contact.id) {
+        <li>
+            <app-contact-item 
+                [contact]="contact" 
+                (parentMethod)="enviarId($event)">
+            </app-contact-item>
+        </li>
+    }
+</ul>
