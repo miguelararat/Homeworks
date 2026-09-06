@@ -1,1 +1,10 @@
-<p>linked-list works!</p>
+<h1>Lista de canciones</h1>
+<h2>Reproduciendose actualmente: {{ currentValue }}</h2>
+
+@if (current?.next) {
+    <button (click)="nextTrack()">
+      Siguiente canción
+    </button>
+  } @else {
+    <p class="end-message"> Has llegado al final de la lista de reproducción.</p>
+  }
