@@ -42,3 +42,10 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Angular / Vite cache
+.angular/
+.vite/
+dist/
+node_modules/

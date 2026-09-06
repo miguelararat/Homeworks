@@ -1,1 +1,15 @@
-<p>doubly-linked-list works!</p>
+<h1>Historial de navegación</h1>
+<h2>Pagina actual {{currentValue}}</h2>
+
+@if(current?.next){
+    <button (click)="goForward()"> Siguiente sitio web </button>
+} @else {
+    <p class="end-message">Estás en la página más reciente del historial.</p>
+}
+
+
+@if(current?.prev){
+    <button (click)="goBack()"> Sitio web anterior </button>
+} @else {
+    <p class="end-message">Estás en la página más antigua del historial.</p>
+}

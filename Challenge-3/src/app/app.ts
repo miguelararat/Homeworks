@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { LinkedListComponent } from './pages/linked-list/linked-list';
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
-  imports: [LinkedListComponent],
+  imports: [RouterOutlet, RouterLinkWithHref], 
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
