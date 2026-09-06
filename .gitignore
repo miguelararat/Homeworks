@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.vs/
+.vscode/
+*.log
+
+
+node_modules/
+.angular/
+.vite/
+dist/
+*.tsbuildinfo
+_metadata.json
