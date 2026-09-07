@@ -1,0 +1,4 @@
+@for (estudiante of estudiantes(); track estudiante.id){
+    <p> Nombre :{{estudiante.nombre}}  Edad: {{estudiante.edad}} codigo:{{estudiante.codigo}}</p>
+    <button (click)="eliminarClick(estudiante.id)">Eliminar</button>
+}

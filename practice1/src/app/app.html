@@ -1,0 +1,7 @@
+<input [(ngModel)]="nombre" placeholder="Nombre">
+<input [(ngModel)]="edad" type="number" placeholder="Edad">
+<input [(ngModel)]="codigo" type="number" placeholder="Código">
+<button (click)="agregarEstudiante(nombre,edad,codigo)"> Agregar estudiante</button>
+<app-student-list [estudiantes]="estudianteArray()"
+  (eliminar)="eliminarEstudiante($event)">
+</app-student-list>
