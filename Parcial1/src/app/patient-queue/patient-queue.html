@@ -1,0 +1,8 @@
+<H1>Gestión de Cola de Pacientes</H1>
+@if (patient?.nombre == null) {
+    <h2>No hay pacientes en la cola</h2>
+}
+@else{
+    <h2>Paciente actual {{ patient?.nombre }}</h2>
+    <button (click)="attendPatient()">Atender paciente</button>
+}

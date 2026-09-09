@@ -1,0 +1,10 @@
+<h1>Historial de pacientes atendidos</h1>
+
+@if (historial.length === 0) {
+  <h2>Aún no se ha atendido a ningún paciente</h2>
+}
+@else {
+  @for (paciente of historial; track paciente.value) {
+    <p>{{ paciente.value }}</p>
+  }
+}

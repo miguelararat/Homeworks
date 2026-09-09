@@ -1,0 +1,9 @@
+<h1>Gestor de administradores</h1>
+@if (administrador === null) {
+    <h2>No hay administrador registrado</h2>
+}
+@else {
+    <h2> {{administrador?.value}}</h2>
+    <button (click)="avanzarMiembro()">Avanzar</button>
+    <button (click)="retrocederMiembro()">Retroceder</button>
+}
