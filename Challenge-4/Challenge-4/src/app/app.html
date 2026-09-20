@@ -1,0 +1,12 @@
+<form #f="ngForm" (ngSubmit)="enviarDatos(f.value)">
+  <input type="text" name="nombreLibro" [(ngModel)]="nombreLibro" placeholder="Nombre del libro">
+  <input type="text" name="autorLibro" [(ngModel)]="autorLibro" placeholder="Autor del libro">
+  <input type="number" name="anoPublicacion" [(ngModel)]="anoPublicacion" placeholder="Año de publicación">
+  <button type="submit">Enviar</button>
+
+  <ul>
+  @for (libro of stack.items.slice().reverse(); track $index) {
+    <li>{{ libro.titulo }} - {{ libro.autor }} ({{ libro.anoPublicacion }})</li>
+  }
+</ul>
+</form>
