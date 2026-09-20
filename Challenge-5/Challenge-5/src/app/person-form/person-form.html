@@ -1,0 +1,5 @@
+<form (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="Nombre de la persona" name="name" [(ngModel)]="name" required />
+  <input type="number" placeholder="Monto a retirar" name="withdrawalAmount" [(ngModel)]="withdrawalAmount" required />
+  <button type="submit">Agregar</button>
+</form>
