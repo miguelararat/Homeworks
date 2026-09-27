@@ -1,0 +1,15 @@
+
+<h1 class="titulo">Challenge 6</h1>
+<p class ="parrafo1">Raíz del árbol: {{ arbolBinario.raiz?.valor }}</p>
+
+
+<div class="botones">
+  <button (click)="preOrder()">PreOrder</button>
+  <button (click)="postOrden()">PostOrder</button>
+  <button (click)="inOrder()">InOrder</button>
+</div>
+
+<div class="caja-resultado">
+  <strong>{{ tipoActual || 'Selecciona un recorrido' }}</strong>
+  <textarea readonly [value]="resultado.join(', ')"></textarea>
+</div>
