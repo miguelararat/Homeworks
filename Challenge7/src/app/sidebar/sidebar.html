@@ -1,0 +1,7 @@
+@if (raiz) {
+<ul>
+    @for (item of raiz.hijos; track item.titulo) {
+         <app-menu-item [nodo]="item"></app-menu-item>
+    }
+</ul>
+}
