@@ -56,4 +56,19 @@ export class BinaryTree {
         return resultado;
     }
 
+    existe(valor: number): boolean {
+    let actual = this.raiz;
+
+    while (actual !== null) {
+        if (valor === actual.valor) {
+            return true;
+        } else if (valor < actual.valor) {
+            actual = actual.izquierda;
+        } else {
+            actual = actual.derecha;
+        }
+    }
+
+   return false;
+}
 }

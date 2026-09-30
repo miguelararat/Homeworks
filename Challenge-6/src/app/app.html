@@ -13,3 +13,12 @@
   <strong>{{ tipoActual || 'Selecciona un recorrido' }}</strong>
   <textarea readonly [value]="resultado.join(', ')"></textarea>
 </div>
+
+<div class="consulta">
+  <input
+    type="number"
+    placeholder="Ingrese un numero para comprobar si existe en el arbol"
+    (input)="valorIngresado = $any($event.target).valueAsNumber">
+  <button (click)="existe(valorIngresado!)">Comprobar</button>
+  <p>{{ resultadoConsulta }}</p>
+</div>
