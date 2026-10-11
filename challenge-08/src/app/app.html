@@ -1,10 +1,8 @@
 <nav class="menu">
   @if (auth.estaLogueado()) {
-    <a routerLink="/ejercicio-6" routerLinkActive="activo">Challenge 6</a>
-    <a routerLink="/ejercicio-7" routerLinkActive="activo">Challenge 7</a>
-    <span>Usuario {{auth.usuario()}}</span>
+    <a routerLink="/tareas" routerLinkActive="activo">Tareas</a>
+    <span>Usuario: {{ auth.usuario() }}</span>
     <button (click)="salir()">Cerrar sesión</button>
-  
   }
 </nav>
 

@@ -1,0 +1,30 @@
+<h1 class="h1">Mis tareas</h1>
+
+<form (ngSubmit)="agregar()">
+  <input class ="form-control"name="titulo" [(ngModel)]="titulo" placeholder="Nueva tarea" required>
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+@if (servicio.error()) {
+  <p class="error">{{ servicio.error() }}</p>
+}
+
+<ul class="list-group">
+  @for (t of servicio.results(); track t.id) {
+    <li class="list-group-item d-flex align-items-center gap-2">
+      <input class="form-check-input mt-0" type="checkbox" [checked]="t.hecha" (change)="alternar(t)">
+
+      @if (editandoId() === t.id) {
+        <input class="form-control form-control-sm" name="edicion" [(ngModel)]="tituloEditado">
+        <button class="btn btn-sm btn-outline-success" type="button" (click)="guardarEdicion(t)">Guardar</button>
+        <button class="btn btn-sm btn-outline-danger" type="button" (click)="cancelarEdicion()">Cancelar</button>
+      } @else {
+        <span class="me-auto" [class.hecha]="t.hecha">{{ t.titulo }}</span>
+        <button class="btn btn-sm btn-outline-primary" type="button" (click)="empezarEdicion(t)">Editar</button>
+        <button class="btn btn-sm btn-outline-danger" type="button" (click)="eliminar(t.id!)">Eliminar</button>
+      }
+    </li>
+  } @empty {
+    <li class="list-group-item">No hay tareas</li>
+  }
+</ul>

@@ -1,0 +1,16 @@
+<div class="login">
+    <h1>Registro</h1>
+    <form (ngSubmit)="registrar()">
+        <input class="form-control" name="email" type="email" [(ngModel)] = "email" placeholder="Email" required>
+        <input class="form-control" name="password" type="password" [(ngModel)]="password" placeholder="Contraseña (mínimo 6 caracteres)" required minlength="6">
+        <button type="submit" class="btn btn-primary">Crear cuenta</button>
+    </form>
+
+
+  @if (auth.error()) {
+    <p class="error">{{ auth.error() }}</p>
+  }
+
+  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+
+</div>

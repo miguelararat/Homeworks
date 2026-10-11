@@ -1,25 +1,16 @@
 .menu {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  padding: 0.8rem 1.5rem;
-  background: #1f2937;
-}
+  a {
+    color: #d1d5db;
 
-.menu a {
-  color: #d1d5db;
-  text-decoration: none;
-}
+    &:hover {
+      color: #fff;
+    }
+  }
 
-.menu a:hover {
-  color: #fff;
+  .activo {
+    font-weight: bold;
+  }
 }
-
-.activo {
-  font-weight: bold;
-  color: #fff !important;
-}
-
 .menu span {
   margin-left: auto;
   color: #9ca3af;

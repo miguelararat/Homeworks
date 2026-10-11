@@ -6,14 +6,14 @@ import { Auth } from './auth';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.scss'
 })
 export class App {
   protected readonly auth = inject(Auth);
   private router = inject(Router);
 
-  salir(){
-    this.auth.salir();
+  async salir(){
+    await this.auth.salir();
     this.router.navigate(['/login']);
   }
 }
