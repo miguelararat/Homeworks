@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h1>Explorador de archivos</h1>
+
+  @if (arbol.error()) {
+    <div class="alert alert-danger">{{ arbol.error() }}</div>
+  }
+
+  @if (arbol.isPending()) {
+    <p>Cargando...</p>
+  }
+
+  <app-nodo-vista [nodo]="arbol.arbol().root" />
+</div>
+

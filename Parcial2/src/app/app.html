@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark bg-dark px-3 gap-3">
+  @if (auth.estaLogueado()) {
+    <a routerLink="/explorador" routerLinkActive="activo" class="text-white">Explorador</a>
+    <span class="text-white ms-auto">{{ auth.usuario() }}</span>
+    <button class="btn btn-sm btn-danger" type="button" (click)="salir()">Cerrar sesión</button>
+  }
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

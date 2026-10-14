@@ -1,0 +1,79 @@
+<div class="fila py-1">
+  @if (nodo().tipo === 'carpeta') {
+    <button class="btn btn-sm btn-link" type="button" (click)="alternar()">
+      {{ expandido() ? '▼' : '▶' }}
+    </button>
+    <strong>{{ nodo().value }}</strong>
+  } @else {
+    <span>{{ nodo().value }}</span>
+  }
+
+  <small class="text-muted">({{ nodo().tipo }} · {{ nodo().creadoPor }})</small>
+
+  @if (nodo().tipo === 'carpeta') {
+    <button class="btn btn-sm btn-primary" type="button" (click)="empezarCreacion('carpeta')">+ Carpeta</button>
+    <button class="btn btn-sm btn-primary" type="button" (click)="empezarCreacion('archivo')">+ Archivo</button>
+  }
+  @if (nodo().id !== 'raiz') {
+    <button class="btn btn-sm btn-danger" type="button" (click)="eliminar()">Eliminar</button>
+  }
+</div>
+
+@if (creando()) {
+  <form class="my-2" (ngSubmit)="guardar()">
+    <input class="form-control mb-2" name="nombre" [(ngModel)]="nombre" placeholder="Nombre" required>
+    <button class="btn btn-sm btn-success" type="submit">Crear</button>
+    <button class="btn btn-sm btn-secondary" type="button" (click)="cancelar()">Cancelar</button>
+  </form>
+}
+
+@if (nodo().tipo === 'carpeta' && expandido()) {
+  <div class="hijos">
+    @for (hijo of nodo().children; track hijo.id) {
+      <app-nodo-vista [nodo]="hijo" />
+    } @empty {
+      <small class="text-muted">Carpeta vacía</small>
+    }
+  </div>
+}
+
+<div class="fila py-1">
+  @if (nodo().tipo === 'carpeta') {
+    <button class="btn btn-sm btn-link" type="button" (click)="alternar()">
+      {{ expandido() ? '▼' : '▶' }}
+    </button>
+    <strong>{{ nodo().value }}</strong>
+  } @else {
+    <span>{{ nodo().value }}</span>
+  }
+
+  <small class="text-muted">({{ nodo().tipo }} · {{ nodo().creadoPor }})</small>
+
+  @if (nodo().tipo === 'carpeta') {
+    <button class="btn btn-sm btn-primary" type="button" (click)="empezarCreacion('carpeta')">+ Carpeta</button>
+    <button class="btn btn-sm btn-primary" type="button" (click)="empezarCreacion('archivo')">+ Archivo</button>
+  }
+  @if (nodo().id !== 'raiz') {
+    <button class="btn btn-sm btn-danger" type="button" (click)="eliminar()">Eliminar</button>
+  }
+</div>
+
+@if (creando()) {
+  <form class="my-2" (ngSubmit)="guardar()">
+    <input class="form-control mb-2" name="nombre" [(ngModel)]="nombre" placeholder="Nombre" required>
+    <button class="btn btn-sm btn-success" type="submit">Crear</button>
+    <button class="btn btn-sm btn-secondary" type="button" (click)="cancelar()">Cancelar</button>
+  </form>
+}
+
+@if (nodo().tipo === 'carpeta' && expandido()) {
+  <div class="hijos">
+    @for (hijo of nodo().children; track hijo.id) {
+      <app-nodo-vista [nodo]="hijo" />
+    } @empty {
+      <small class="text-muted">Carpeta vacía</small>
+    }
+  </div>
+}
+
+
