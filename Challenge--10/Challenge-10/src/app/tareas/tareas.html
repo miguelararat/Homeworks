@@ -1,0 +1,47 @@
+<main class="tasks-page container py-4 py-md-5">
+  <section class="tasks-card card border-0 shadow-sm mx-auto">
+    <div class="card-body p-4 p-md-5">
+      <h1 class="h3 mb-4">Mis tareas</h1>
+
+      <form (ngSubmit)="agregar()" class="input-group mb-4">
+        <input
+          class="form-control"
+          name="nueva"
+          [(ngModel)]="nueva"
+          placeholder="Nueva tarea"
+          aria-label="Nueva tarea"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Agregar</button>
+      </form>
+
+      @if (mensajeError) {
+        <p class="alert alert-danger" role="alert">{{ mensajeError }}</p>
+      }
+
+      <ul class="list-group list-group-flush">
+        @for (t of tareas(); track t.id) {
+          <li class="list-group-item task-item d-flex align-items-center gap-3 px-0">
+            <input
+              class="form-check-input mt-0"
+              type="checkbox"
+              [checked]="t.completada"
+              [attr.aria-label]="'Marcar ' + t.titulo + ' como completada'"
+              (change)="srv.completar(t.id, !t.completada)"
+            />
+            <span class="task-title flex-grow-1" [class.task-completed]="t.completada">
+              {{ t.titulo }}
+            </span>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="srv.borrar(t.id)">
+              Borrar
+            </button>
+          </li>
+        } @empty {
+          <li class="list-group-item text-body-secondary text-center px-0">
+            No hay tareas todavía.
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+</main>

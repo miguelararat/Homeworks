@@ -1,0 +1,21 @@
+.tasks-page {
+  min-height: calc(100dvh - 4rem);
+}
+
+.tasks-card {
+  max-width: 48rem;
+  border-radius: 1rem;
+}
+
+.task-item {
+  min-width: 0;
+}
+
+.task-title {
+  overflow-wrap: anywhere;
+}
+
+.task-completed {
+  color: var(--bs-secondary-color);
+  text-decoration: line-through;
+}

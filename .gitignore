@@ -3,3 +3,4 @@ node_modules/
 .angular/
 .vite/
 dist/
+**/.agents/skills/

@@ -1,0 +1,48 @@
+<main class="login-page container-fluid px-3">
+  <section class="login-card card border-0 shadow-sm">
+    <div class="card-body p-4 p-md-5">
+      <h1 class="h3 text-center mb-4">Iniciar sesión</h1>
+
+      <form (ngSubmit)="entrar()" class="d-grid gap-3">
+        <div>
+          <label class="form-label" for="login-email">Correo electrónico</label>
+          <input
+            id="login-email"
+            class="form-control"
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="nombre@ejemplo.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="form-label" for="login-password">Contraseña</label>
+          <input
+            id="login-password"
+            class="form-control"
+            type="password"
+            name="clave"
+            [(ngModel)]="clave"
+            placeholder="Contraseña"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="button" class="btn btn-outline-primary" (click)="registrar()">
+            Crear cuenta
+          </button>
+        </div>
+      </form>
+
+      @if (msg) {
+        <p class="login-message alert alert-info mt-3 mb-0" role="status">{{ msg }}</p>
+      }
+    </div>
+  </section>
+</main>

@@ -1,0 +1,15 @@
+.login-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #f4f6fb;
+}
+
+.login-card {
+  width: min(100%, 28rem);
+  border-radius: 1rem;
+}
+
+.login-message {
+  overflow-wrap: anywhere;
+}
