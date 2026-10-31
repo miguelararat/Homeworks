@@ -1,0 +1,140 @@
+<nav class="navbar navbar-dark bg-dark mb-4">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1">Challenge 11 · Grafo de amigos y ciudades</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  @if (message) {
+    <div class="alert alert-{{ messageType }} alert-dismissible" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" (click)="message = ''"></button>
+    </div>
+  }
+
+  <div class="row g-4">
+
+    <!-- Columna de formularios -->
+    <div class="col-lg-5">
+
+      <!-- Agregar ciudad -->
+      <div class="card mb-3">
+        <div class="card-header">1. Agregar ciudad</div>
+        <div class="card-body">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Nombre de la ciudad"
+                   [(ngModel)]="cityName" (keyup.enter)="addCity()">
+            <button class="btn btn-primary" (click)="addCity()">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agregar persona -->
+      <div class="card mb-3">
+        <div class="card-header">2. Agregar persona</div>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-8">
+              <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="personName">
+            </div>
+            <div class="col-4">
+              <input type="number" class="form-control" placeholder="Edad" min="0" [(ngModel)]="personAge">
+            </div>
+            <div class="col-12">
+              <select class="form-select" [(ngModel)]="personCityId">
+                <option value="">Sin ciudad (asignar después)</option>
+                @for (c of cities; track c.id) {
+                  <option [value]="c.id">{{ c.name }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-12 d-grid">
+              <button class="btn btn-primary" (click)="addPerson()">Agregar persona</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agregar relación -->
+      <div class="card mb-3">
+        <div class="card-header">3. Relacionar persona con ciudad</div>
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-6">
+              <select class="form-select" [(ngModel)]="relPersonId">
+                <option value="">Persona...</option>
+                @for (p of peopleWithoutCity; track p.id) {
+                  <option [value]="p.id">{{ p.name }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" [(ngModel)]="relCityId">
+                <option value="">Ciudad...</option>
+                @for (c of cities; track c.id) {
+                  <option [value]="c.id">{{ c.name }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-12 d-grid">
+              <button class="btn btn-success" (click)="addRelation()">Crear relación</button>
+            </div>
+          </div>
+          <small class="text-muted d-block mt-2">
+            Solo aparecen las personas que todavía no tienen ciudad.
+          </small>
+        </div>
+      </div>
+
+      <!-- Consultar por ciudad -->
+      <div class="card mb-3">
+        <div class="card-header">4. Personas que viven en una ciudad</div>
+        <div class="card-body">
+          <select class="form-select mb-3" [ngModel]="selectedCityId" (ngModelChange)="selectCity($event)">
+            <option value="">Selecciona una ciudad...</option>
+            @for (c of cities; track c.id) {
+              <option [value]="c.id">{{ c.name }}</option>
+            }
+          </select>
+
+          @if (selectedCityId) {
+            @if (peopleInCity.length === 0) {
+              <p class="text-muted mb-0">Nadie vive en esta ciudad todavía.</p>
+            } @else {
+              <ul class="list-group">
+                @for (p of peopleInCity; track p.id) {
+                  <li class="list-group-item d-flex justify-content-between">
+                    {{ p.name }}
+                    <span class="badge bg-secondary">{{ p.age }} años</span>
+                  </li>
+                }
+              </ul>
+            }
+          }
+        </div>
+      </div>
+
+      <button class="btn btn-outline-dark w-100" (click)="printGraph()">
+        Imprimir grafo en consola
+      </button>
+    </div>
+
+    <!-- Columna del grafo -->
+    <div class="col-lg-7">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>Visualización del grafo</span>
+          <span>
+            <span class="legend-dot person"></span> Persona
+            <span class="legend-dot city ms-3"></span> Ciudad
+          </span>
+        </div>
+        <div class="card-body p-0">
+          <svg #svg></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

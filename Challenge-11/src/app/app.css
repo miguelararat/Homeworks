@@ -1,0 +1,22 @@
+svg {
+  width: 100%;
+  height: 500px;
+  background-color: #f8f9fa;
+  display: block;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.legend-dot.person {
+  background-color: #3d85c6;
+}
+
+.legend-dot.city {
+  background-color: #e07a5f;
+}

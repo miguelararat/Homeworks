@@ -1,5 +1,6 @@
 node_modules/
 **/node_modules/
+**/.agents/skills/
 .angular/
 .vite/
 dist/
