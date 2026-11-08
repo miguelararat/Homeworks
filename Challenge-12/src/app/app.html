@@ -1,0 +1,38 @@
+<main class="app">
+  <h1 class="app__title">Buscador inteligente</h1>
+
+  <div class="search">
+    <input
+      id="search-input"
+      class="search__input"
+      type="text"
+      aria-label="Prefijo del producto"
+      placeholder="Escribe un prefijo, ej: air"
+      autocomplete="off"
+      [(ngModel)]="prefix"
+    >
+    <input
+      id="top-k"
+      class="search__limit"
+      type="number"
+      min="1"
+      step="1"
+      aria-label="Cantidad de resultados"
+      [(ngModel)]="topK"
+    >
+  </div>
+
+  <ul id="results" class="results">
+    @for (product of results(); track product.name) {
+      <li class="results__item">
+        <span class="results__name">{{ product.name }}</span>
+        <span class="results__popularity">{{ product.popularity }}</span>
+      </li>
+    }
+  </ul>
+  @if (results() === null) {
+    <p class="empty">Ingresa una cantidad entera mayor que cero.</p>
+  } @else if (results()?.length === 0) {
+    <p id="empty" class="empty">No hay productos con ese prefijo.</p>
+  }
+</main>
