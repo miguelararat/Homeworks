@@ -1,0 +1,90 @@
+.titulo {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #f0abfc, #67e8f9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitulo {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.buscador {
+  max-width: 600px;
+  margin-inline: auto;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
+  .form-control {
+    border: none;
+    padding-left: 1.5rem;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .btn-buscar {
+    border: none;
+    padding-inline: 2rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #d946ef, #06b6d4);
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(1.15);
+      color: #fff;
+    }
+  }
+}
+
+.vacio {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}
+
+.tarjeta {
+  position: relative;
+  margin: 0;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 2rem 0.75rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    opacity: 0;
+    transition: opacity 0.25s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+
+    figcaption {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="container py-5">
+  <header class="text-center mb-5">
+    <h1 class="titulo">GIF Finder</h1>
+    <p class="subtitulo">Encuentra el GIF perfecto con Giphy</p>
+  </header>
+
+  <div class="input-group input-group-lg buscador mb-5">
+    <input
+      #inputBusqueda
+      type="text"
+      class="form-control"
+      placeholder="Busca un GIF... (ej. smile, gatos, celebración)"
+      (keyup.enter)="buscar(inputBusqueda.value)"
+    />
+    <button class="btn btn-buscar" (click)="buscar(inputBusqueda.value)">
+      Buscar
+    </button>
+  </div>
+
+  @if (giphy.cargando()) {
+    <div class="text-center my-5">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+  }
+
+  @if (giphy.error()) {
+    <div class="alert alert-danger text-center" role="alert">
+      Error: {{ giphy.error() }}
+    </div>
+  }
+
+  @if (!giphy.buscado() && !giphy.cargando() && !giphy.error()) {
+  <p class="vacio text-center">Escribe algo arriba para empezar a buscar ✨</p>
+}
+
+@if (giphy.buscado() && !giphy.gifs().length && !giphy.cargando() && !giphy.error()) {
+  <p class="vacio text-center">No encontramos GIFs para esa búsqueda 😕</p>
+}
+
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+    @for (gif of giphy.gifs(); track gif.id) {
+      <div class="col">
+        <figure class="tarjeta">
+          <img [src]="gif.images.fixed_height.url" [alt]="gif.title" loading="lazy" />
+          <figcaption>{{ gif.title }}</figcaption>
+        </figure>
+      </div>
+    }
+  </div>
+</div>
